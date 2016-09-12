@@ -44,8 +44,10 @@ Priority | As a ... | I want to ... | So that I can...
 `* * *` | new user | see usage instructions | refer to instructions when I forget how to use the App
 `* * *` | user | add a new person |
 `* * *` | user | delete a person | remove entries that I no longer need
+`* * *` | user | list entire address book | show all contacts on my address book
 `* * *` | user | find a person by name | locate details of persons without having to go through the entire list
 `* *` | user | hide [private contact details](#private-contact-detail) by default | to minimize chance of someone else seeing them by accident
+`* *` | user | add tags to a person | add in the relationship with the person
 `*` | user with many persons in the address book | sort persons by name | locate a person easily
 
 
@@ -53,6 +55,34 @@ Priority | As a ... | I want to ... | So that I can...
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
+#### Use case: Edit tag
+
+**MSS**
+
+1. User requests to edit persons tag
+2. AddressBook finds the person and list all the details of the person
+3. User requests to edit an tag of an existing person to a new tag 
+4. AddressBook confirm the change in tag with the user 
+5. User confirm the tag change
+6. AddressBook edits the tag of the person as requested by the use 
+Use case ends.
+
+**Extensions**
+
+2a. The list is empty
+
+> Use case ends
+
+3a. The given index is invalid
+
+> 3a1. AddressBook shows an error message <br>
+  Use case resumes at step 2
+  
+5a. User decline the tag change
+
+> 5a1. AddressBook shows that changes have not been made <br>
+  Use case resumes at step 2
+  
 #### Use case: Delete person
 
 **MSS**
@@ -80,6 +110,7 @@ Use case ends.
 2. Should be able to hold up to 1000 persons.
 3. Should come with automated unit tests and open source code.
 4. Should favor DOS style commands over Unix-style commands.
+5. Should respond to any commands by user within 1 seconds. 
 
 ## Appendix D : Glossary
 
